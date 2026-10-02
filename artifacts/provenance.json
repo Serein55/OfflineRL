@@ -1,0 +1,17 @@
+{
+  "lerobot": "ce3b9f627e55223d6d1c449d348c6b351b35d082",
+  "LIBERO": "8f1084e3132a39270c3a13ebe37270a43ece2a01",
+  "reinboT": "81ecdd0e6662e0070dcb55cc7001f4170f2a43e6",
+  "pi0": {
+    "repo": "lerobot/pi0_old",
+    "revision": "e4ed526af508e58f6008b29e9e48f1098278fdb5",
+    "type": "model",
+    "status": "complete"
+  },
+  "dataset": {
+    "repo": "yifengzhu-hf/LIBERO-datasets",
+    "revision": "f13aa24a3da8c43c7225569f28c562979fa0e35a",
+    "type": "dataset",
+    "status": "complete"
+  }
+}

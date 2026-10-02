@@ -1,0 +1,23 @@
+{
+  "lerobot_commit": "ce3b9f627e55223d6d1c449d348c6b351b35d082",
+  "checkpoint_repo": "lerobot/pi0_old",
+  "checkpoint_revision": "e4ed526af508e58f6008b29e9e48f1098278fdb5",
+  "gpu_ids": [0, 1, 2, 3],
+  "global_batch": 16,
+  "local_batch": 4,
+  "gradient_accumulation": 1,
+  "steps": 40000,
+  "horizon": 50,
+  "precision": "fp32 masters, bf16 autocast",
+  "full_finetune": true,
+  "optimizer": "AdamW with ZeRO stage-1 optimizer state sharding",
+  "lambda": 0.0005,
+  "alpha_bounds": [0.01, 5],
+  "bisection_iterations": 20,
+  "bisection_tolerance": 0.00001,
+  "rtg": "undiscounted mean future reward at chunk start",
+  "advantage_group": "all chunks within each concrete task; LOO; no z-score",
+  "time_sampler": "uniform; beta ablation available",
+  "reward": "13-term Table-8 reconstruction with ReinboT-inspired keypoints",
+  "evaluation": {"rollouts_per_task": 50, "init_states": "official first 50", "seed": 42, "denoise_steps": 10, "execution_horizon": 50}
+}

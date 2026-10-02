@@ -1,0 +1,17 @@
+{
+  "agentview_rgb": {
+    "identity": 147.55977376302084,
+    "vertical": 4210.2742106119795,
+    "horizontal": 4328.988932291667,
+    "rotate180": 6283.839925130208
+  },
+  "eye_in_hand_rgb": {
+    "identity": 379.6398111979167,
+    "vertical": 7452.2701416015625,
+    "horizontal": 5210.712727864583,
+    "rotate180": 8929.152994791666
+  },
+  "ee_pos_max_error": 0.0004923155810567792,
+  "ee_ori_max_error": 0.007437630600293232,
+  "gripper_states_max_error": 0.0021737230584248785
+}

@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+.pytest_cache/
+checkpoints/
+data/
+logs/
+vendor/
+.env
+.env.*
+*.pt
+*.pt.tmp
+*.safetensors
+configs/libero/
+artifacts/*_seed*/
+artifacts/smoke*/
+artifacts/pipeline_state.txt
+artifacts/run.json
