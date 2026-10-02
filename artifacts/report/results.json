@@ -1,0 +1,60 @@
+{
+  "protocol": {
+    "time_sampler": "uniform",
+    "seed": 42,
+    "rollouts_per_task": 50,
+    "tasks": 40,
+    "replan_steps": 50
+  },
+  "results": {
+    "vanilla": {
+      "libero_goal": {
+        "successes": 352,
+        "rollouts": 500,
+        "success_rate": 0.704
+      },
+      "libero_spatial": {
+        "successes": 294,
+        "rollouts": 500,
+        "success_rate": 0.588
+      },
+      "libero_object": {
+        "successes": 328,
+        "rollouts": 500,
+        "success_rate": 0.656
+      },
+      "libero_10": {
+        "successes": 182,
+        "rollouts": 500,
+        "success_rate": 0.364
+      },
+      "average": 0.578
+    },
+    "arfm": {
+      "libero_goal": {
+        "successes": 342,
+        "rollouts": 500,
+        "success_rate": 0.684
+      },
+      "libero_spatial": {
+        "successes": 287,
+        "rollouts": 500,
+        "success_rate": 0.574
+      },
+      "libero_object": {
+        "successes": 323,
+        "rollouts": 500,
+        "success_rate": 0.646
+      },
+      "libero_10": {
+        "successes": 197,
+        "rollouts": 500,
+        "success_rate": 0.394
+      },
+      "average": 0.5745
+    },
+    "rwr": {
+      "status": "pending"
+    }
+  }
+}

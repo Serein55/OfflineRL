@@ -2,7 +2,7 @@
 
 Assumptions: reference=next within-demo heuristic keypoint; raw uint8 RGB;
 position MSE scale .01; finite differences per control step; terminal-only success;
-progress=number of keypoints already reached / total. See assumptions.md.
+progress=number of keypoints already reached / total. See README.md for reconstruction assumptions.
 """
 import cv2
 import numpy as np

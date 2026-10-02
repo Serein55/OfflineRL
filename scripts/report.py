@@ -7,10 +7,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 root=Path(__file__).resolve().parents[1]; out=root/'artifacts/report'; out.mkdir(exist_ok=True)
 fig,axes=plt.subplots(3,1,figsize=(10,9),sharex=True)
-lines=['# ARFM independent reproduction results','',
-       'Only completed evaluations are listed. Empty entries are not paper scores.', '',
-       '| Method | Goal | Spatial | Object | Long | Average |',
-       '|---|---:|---:|---:|---:|---:|']
+results={}
 any_data=False
 for method in ['vanilla','arfm','rwr']:
     run=root/f'artifacts/{method}_uniform_seed42'
@@ -30,10 +27,9 @@ for method in ['vanilla','arfm','rwr']:
                 ax.set_ylabel(key); ax.grid(alpha=.2)
     result=run/'results.json'
     if result.exists():
-        r=json.loads(result.read_text()); values=[r[s]['success_rate'] for s in ['libero_goal','libero_spatial','libero_object','libero_10']]+[r['average']]
-        lines.append('| '+method+' | '+' | '.join(f'{100*v:.2f}%' for v in values)+' |')
+        results[method]=json.loads(result.read_text())
     else:
-        lines.append('| '+method+' | pending | pending | pending | pending | pending |')
+        results[method]={'status':'pending'}
 axes[-1].set_xlabel('Optimizer step'); fig.suptitle('Training diagnostics (up to 100-step moving mean)')
 if any_data: axes[0].legend()
 fig.tight_layout(); fig.savefig(out/'training.png',dpi=160); plt.close(fig)
@@ -42,7 +38,4 @@ if files:
     adv=np.concatenate([np.load(f)['advantage'] for f in files])
     fig,ax=plt.subplots(figsize=(8,4)); ax.hist(adv,bins=100); ax.set_xlabel('Task-centered LOO advantage'); ax.set_ylabel('Chunk count')
     fig.tight_layout(); fig.savefig(out/'advantage.png',dpi=160); plt.close(fig)
-lines += ['', 'Protocol: Uniform time; seed 42; 50 rollouts/task; last checkpoint; 40 tasks.',
-          'RWR fixed alpha=0.1. See ../assumptions.md for reconstruction choices.',
-          '', '![Training diagnostics](training.png)', '', '![Advantage distribution](advantage.png)']
-(out/'results.md').write_text('\n'.join(lines)+'\n')
+(out/'results.json').write_text(json.dumps({'protocol':{'time_sampler':'uniform','seed':42,'rollouts_per_task':50,'tasks':40,'replan_steps':50},'results':results},indent=2)+'\n')
