@@ -1,0 +1,402 @@
+[
+  {
+    "count": 13298,
+    "mean": 1.4319803176490533e-13,
+    "std": 0.002873683323234471,
+    "eps": 1e-08,
+    "normalized_mean": 5.507687347420602e-10,
+    "normalized_std": 0.9999965231988629,
+    "task_file": "data/processed/libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 12434,
+    "mean": 4.1280824307819513e-13,
+    "std": 0.004266846893893003,
+    "eps": 1e-08,
+    "normalized_mean": -3.2539758659457765e-10,
+    "normalized_std": 0.9999976546929162,
+    "task_file": "data/processed/libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 15232,
+    "mean": 1.9872502336514733e-13,
+    "std": 0.002884243681663061,
+    "eps": 1e-08,
+    "normalized_mean": -7.264791942621481e-11,
+    "normalized_std": 0.9999965324629292,
+    "task_file": "data/processed/libero_10/KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 20794,
+    "mean": -1.0508644813022142e-14,
+    "std": 0.0021273092586253967,
+    "eps": 1e-08,
+    "normalized_mean": 2.293600514113487e-11,
+    "normalized_std": 0.9999953000702299,
+    "task_file": "data/processed/libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 13476,
+    "mean": 2.8115051924379907e-13,
+    "std": 0.0028269591281003385,
+    "eps": 1e-08,
+    "normalized_mean": -1.301044454058905e-10,
+    "normalized_std": 0.9999964623773433,
+    "task_file": "data/processed/libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 14700,
+    "mean": 2.4553148629904024e-13,
+    "std": 0.0028225084841688136,
+    "eps": 1e-08,
+    "normalized_mean": 8.826955432645648e-12,
+    "normalized_std": 0.9999964571070662,
+    "task_file": "data/processed/libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 13021,
+    "mean": -7.283043942396758e-13,
+    "std": 0.003221823141287599,
+    "eps": 1e-08,
+    "normalized_mean": -5.941436012764674e-11,
+    "normalized_std": 0.9999968955543742,
+    "task_file": "data/processed/libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 12909,
+    "mean": 5.332059322178734e-13,
+    "std": 0.003402555642527897,
+    "eps": 1e-08,
+    "normalized_mean": -6.2833972796434144e-12,
+    "normalized_std": 0.9999970608855772,
+    "task_file": "data/processed/libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 12756,
+    "mean": 2.321574172233416e-13,
+    "std": 0.0025676090544891274,
+    "eps": 1e-08,
+    "normalized_mean": 4.392839445741003e-11,
+    "normalized_std": 0.9999961036565725,
+    "task_file": "data/processed/libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 9470,
+    "mean": -7.971284081008769e-14,
+    "std": 0.002881893469135592,
+    "eps": 1e-08,
+    "normalized_mean": -5.4481325704513913e-11,
+    "normalized_std": 0.9999965297798432,
+    "task_file": "data/processed/libero_10/STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 7027,
+    "mean": 3.7867569712710187e-13,
+    "std": 0.0034876882238800777,
+    "eps": 1e-08,
+    "normalized_mean": -9.265637442191803e-11,
+    "normalized_std": 0.9999971316103458,
+    "task_file": "data/processed/libero_goal/open_the_middle_drawer_of_the_cabinet_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 10208,
+    "mean": -7.199563133055739e-13,
+    "std": 0.0028565640634288384,
+    "eps": 1e-08,
+    "normalized_mean": 9.818016688743034e-11,
+    "normalized_std": 0.9999965001550144,
+    "task_file": "data/processed/libero_goal/open_the_top_drawer_and_put_the_bowl_inside_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 7638,
+    "mean": -2.6785842462638333e-12,
+    "std": 0.0030964712784103204,
+    "eps": 1e-08,
+    "normalized_mean": -2.9021906870085396e-10,
+    "normalized_std": 0.9999967704795223,
+    "task_file": "data/processed/libero_goal/push_the_plate_to_the_front_of_the_stove_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 4669,
+    "mean": -4.1867387689105306e-13,
+    "std": 0.0038228485102222527,
+    "eps": 1e-08,
+    "normalized_mean": 8.296368204409879e-11,
+    "normalized_std": 0.9999973850871081,
+    "task_file": "data/processed/libero_goal/put_the_bowl_on_the_plate_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 5081,
+    "mean": -2.2909206732219685e-12,
+    "std": 0.003646577902584748,
+    "eps": 1e-08,
+    "normalized_mean": 3.139616522327274e-10,
+    "normalized_std": 0.999997260008459,
+    "task_file": "data/processed/libero_goal/put_the_bowl_on_the_stove_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 5094,
+    "mean": 1.847444589665813e-12,
+    "std": 0.0037994630966771436,
+    "eps": 1e-08,
+    "normalized_mean": 1.168609635182629e-10,
+    "normalized_std": 0.9999973685865684,
+    "task_file": "data/processed/libero_goal/put_the_bowl_on_top_of_the_cabinet_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 5349,
+    "mean": -9.852752999962263e-13,
+    "std": 0.0038659501599047335,
+    "eps": 1e-08,
+    "normalized_mean": -6.187270862250757e-10,
+    "normalized_std": 0.9999974106595112,
+    "task_file": "data/processed/libero_goal/put_the_cream_cheese_in_the_bowl_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 8808,
+    "mean": -5.573468823407245e-13,
+    "std": 0.0035051505163680016,
+    "eps": 1e-08,
+    "normalized_mean": -1.974223049646827e-10,
+    "normalized_std": 0.9999971462295639,
+    "task_file": "data/processed/libero_goal/put_the_wine_bottle_on_the_rack_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 5394,
+    "mean": -6.968324487860714e-13,
+    "std": 0.003771064532545138,
+    "eps": 1e-08,
+    "normalized_mean": -1.9610553760942062e-10,
+    "normalized_std": 0.9999973468007849,
+    "task_file": "data/processed/libero_goal/put_the_wine_bottle_on_top_of_the_cabinet_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 4460,
+    "mean": -1.4082383490512106e-12,
+    "std": 0.003496419949761981,
+    "eps": 1e-08,
+    "normalized_mean": 2.734324447977703e-10,
+    "normalized_std": 0.9999971410437194,
+    "task_file": "data/processed/libero_goal/turn_on_the_stove_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 7808,
+    "mean": -8.788015852364059e-13,
+    "std": 0.003969827926788106,
+    "eps": 1e-08,
+    "normalized_mean": -2.5257860648170967e-10,
+    "normalized_std": 0.9999974802921672,
+    "task_file": "data/processed/libero_object/pick_up_the_alphabet_soup_and_place_it_in_the_basket_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 7348,
+    "mean": -1.803869580170319e-12,
+    "std": 0.003780291936901583,
+    "eps": 1e-08,
+    "normalized_mean": 5.5707416904782984e-11,
+    "normalized_std": 0.9999973540414222,
+    "task_file": "data/processed/libero_object/pick_up_the_bbq_sauce_and_place_it_in_the_basket_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 7865,
+    "mean": 1.312701730885567e-12,
+    "std": 0.0036715642757173487,
+    "eps": 1e-08,
+    "normalized_mean": 1.325399170227666e-10,
+    "normalized_std": 0.9999972771455102,
+    "task_file": "data/processed/libero_object/pick_up_the_butter_and_place_it_in_the_basket_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 7982,
+    "mean": -8.453517960250834e-13,
+    "std": 0.003750602413252873,
+    "eps": 1e-08,
+    "normalized_mean": -6.16715344957647e-11,
+    "normalized_std": 0.9999973342016807,
+    "task_file": "data/processed/libero_object/pick_up_the_chocolate_pudding_and_place_it_in_the_basket_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 7194,
+    "mean": -1.8590105206615072e-12,
+    "std": 0.004046246958093622,
+    "eps": 1e-08,
+    "normalized_mean": -1.9093067534133266e-10,
+    "normalized_std": 0.9999975284382552,
+    "task_file": "data/processed/libero_object/pick_up_the_cream_cheese_and_place_it_in_the_basket_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 8056,
+    "mean": -4.184793304117182e-13,
+    "std": 0.0033083194318478167,
+    "eps": 1e-08,
+    "normalized_mean": -4.323197715076902e-10,
+    "normalized_std": 0.9999969756224152,
+    "task_file": "data/processed/libero_object/pick_up_the_ketchup_and_place_it_in_the_basket_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 7281,
+    "mean": 4.725279972888114e-13,
+    "std": 0.0032949389521874915,
+    "eps": 1e-08,
+    "normalized_mean": 1.1901152260727384e-10,
+    "normalized_std": 0.9999969645277066,
+    "task_file": "data/processed/libero_object/pick_up_the_milk_and_place_it_in_the_basket_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 6968,
+    "mean": -6.400676646437798e-13,
+    "std": 0.00356041076807585,
+    "eps": 1e-08,
+    "normalized_mean": -8.041979787800671e-11,
+    "normalized_std": 0.9999971914110524,
+    "task_file": "data/processed/libero_object/pick_up_the_orange_juice_and_place_it_in_the_basket_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 6641,
+    "mean": 9.846473550347222e-13,
+    "std": 0.0034541306412106962,
+    "eps": 1e-08,
+    "normalized_mean": 5.697408425682692e-10,
+    "normalized_std": 0.999997107683545,
+    "task_file": "data/processed/libero_object/pick_up_the_salad_dressing_and_place_it_in_the_basket_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 7364,
+    "mean": -2.1572710423503173e-12,
+    "std": 0.00398375429166623,
+    "eps": 1e-08,
+    "normalized_mean": -5.932217479027335e-11,
+    "normalized_std": 0.9999974881196035,
+    "task_file": "data/processed/libero_object/pick_up_the_tomato_sauce_and_place_it_in_the_basket_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 5068,
+    "mean": -1.3983391310605084e-12,
+    "std": 0.003512270891611392,
+    "eps": 1e-08,
+    "normalized_mean": 3.8135321016975433e-10,
+    "normalized_std": 0.9999971541452202,
+    "task_file": "data/processed/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 5882,
+    "mean": -6.422088672179762e-13,
+    "std": 0.0037114891639728666,
+    "eps": 1e-08,
+    "normalized_mean": 2.8816849469571077e-10,
+    "normalized_std": 0.9999973058230702,
+    "task_file": "data/processed/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 7479,
+    "mean": 1.1235372692228647e-12,
+    "std": 0.0034650111368452062,
+    "eps": 1e-08,
+    "normalized_mean": 1.171313406535211e-10,
+    "normalized_std": 0.9999971148813961,
+    "task_file": "data/processed/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 6312,
+    "mean": 1.172278441056575e-12,
+    "std": 0.003318864273410316,
+    "eps": 1e-08,
+    "normalized_mean": 2.844816431431489e-10,
+    "normalized_std": 0.9999969873267059,
+    "task_file": "data/processed/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 5963,
+    "mean": 4.5380361476920437e-13,
+    "std": 0.0034519223488535876,
+    "eps": 1e-08,
+    "normalized_mean": -1.5667163469078516e-10,
+    "normalized_std": 0.9999971037615544,
+    "task_file": "data/processed/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 6707,
+    "mean": 5.765704167438152e-14,
+    "std": 0.0030031433012214326,
+    "eps": 1e-08,
+    "normalized_mean": -6.765544902468307e-11,
+    "normalized_std": 0.9999966687668179,
+    "task_file": "data/processed/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 5052,
+    "mean": 9.978315350025807e-13,
+    "std": 0.0036588984672061174,
+    "eps": 1e-08,
+    "normalized_mean": 4.427539745934886e-11,
+    "normalized_std": 0.9999972667759123,
+    "task_file": "data/processed/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 5796,
+    "mean": 1.0106967789338457e-12,
+    "std": 0.0030396822130296076,
+    "eps": 1e-08,
+    "normalized_mean": -2.934623684308616e-10,
+    "normalized_std": 0.999996709601663,
+    "task_file": "data/processed/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 7111,
+    "mean": 2.1028307925079675e-13,
+    "std": 0.003267870162422781,
+    "eps": 1e-08,
+    "normalized_mean": 6.647018558314171e-10,
+    "normalized_std": 0.999996941256376,
+    "task_file": "data/processed/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.npz",
+    "mode": "task_zscore"
+  },
+  {
+    "count": 6880,
+    "mean": 1.412214014979242e-13,
+    "std": 0.003265126640448021,
+    "eps": 1e-08,
+    "normalized_mean": 4.104925020053701e-10,
+    "normalized_std": 0.9999969386038704,
+    "task_file": "data/processed/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.npz",
+    "mode": "task_zscore"
+  }
+]

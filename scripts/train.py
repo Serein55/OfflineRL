@@ -18,6 +18,9 @@ def main():
     p.add_argument('--checkpoint',default='checkpoints/pi0'); p.add_argument('--manifest',default='data/processed/manifest.json')
     p.add_argument('--output',required=True); p.add_argument('--save-every',type=int,default=1000)
     p.add_argument('--workers',type=int,default=4); p.add_argument('--fixed-alpha',type=float,default=.1)
+    p.add_argument('--advantage-normalization',choices=['none','task_zscore'],default='none')
+    p.add_argument('--advantage-eps',type=float,default=1e-8)
+    p.add_argument('--arfm-lambda',type=float,default=5e-4)
     p.add_argument('--smoke-inference',action='store_true'); p.add_argument('--resume'); p.add_argument('--no-augment',action='store_true')
     args=p.parse_args()
     rank=int(os.environ.get('RANK',0)); local=int(os.environ.get('LOCAL_RANK',0)); world=int(os.environ.get('WORLD_SIZE',1))
@@ -26,9 +29,13 @@ def main():
     if world>1: dist.init_process_group('nccl')
     random.seed(args.seed+rank); np.random.seed(args.seed+rank); torch.manual_seed(args.seed+rank)
     out=Path(args.output); out.mkdir(parents=True,exist_ok=True)
-    dataset=LiberoChunks(args.manifest,augment=not args.no_augment)
+    if (out/'metrics.jsonl').exists() and not args.resume:
+        raise ValueError('Output already contains training metrics; use a fresh directory or --resume')
+    dataset=LiberoChunks(args.manifest,augment=not args.no_augment,
+                         advantage_normalization=args.advantage_normalization,advantage_eps=args.advantage_eps)
     policy=build_policy(args.checkpoint,dataset.manifest,args.method,args.time_sampler).cuda(local)
     policy.fixed_alpha=args.fixed_alpha
+    policy.arfm_lambda=args.arfm_lambda
     print(f'rank {rank}: loaded {sum(p.numel() for p in policy.parameters()):,} parameters',flush=True)
     start=0
     optim_cls=ZeroRedundancyOptimizer if world>1 else torch.optim.AdamW
@@ -36,6 +43,10 @@ def main():
     optimizer=optim_cls(policy.parameters(),lr=2.5e-5,betas=(.9,.95),eps=1e-8,weight_decay=1e-10,**kw)
     if args.resume:
         ckpt=torch.load(args.resume,map_location='cpu',weights_only=False)
+        defaults={'advantage_normalization':'none','advantage_eps':1e-8,'arfm_lambda':5e-4}
+        for key in ('method','time_sampler','seed','fixed_alpha','advantage_normalization','advantage_eps','arfm_lambda'):
+            if ckpt['args'].get(key,defaults.get(key))!=getattr(args,key):
+                raise ValueError(f'Resume changes {key}; start a separate experiment instead')
         policy.load_state_dict(ckpt['policy']); start=ckpt['step']
         if ckpt.get('world_size',world)!=world: raise ValueError('Resume requires original world size')
         if ckpt.get('optimizer_sharded'):
@@ -52,6 +63,7 @@ def main():
     loader=DataLoader(dataset,batch_size=16//world,sampler=sampler,num_workers=args.workers,pin_memory=True,persistent_workers=args.workers>0)
     if rank==0:
         (out/'config.json').write_text(json.dumps(vars(args),indent=2))
+        (out/'advantage_statistics.json').write_text(json.dumps(dataset.advantage_stats,indent=2))
         log=(out/'metrics.jsonl').open('a')
     for step,batch in enumerate(loader,start):
         begin=time.monotonic()

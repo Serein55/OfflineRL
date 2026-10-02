@@ -1,5 +1,17 @@
 # ARFM / π0 + LIBERO 独立复现
 
+2026-10-03 advantage scaling 实验：新增 `--advantage-normalization task_zscore`，按 concrete task 的全部训练 chunk 计算均值和总体标准差，epsilon=1e-8。默认 `none` 保留原实验行为。离线真实 loss 诊断及实验取舍见 [scaling report](artifacts/scaling_diagnostic/report.md)。
+
+```bash
+source scripts/env.sh
+# 仅前向诊断，不更新模型
+.venv/bin/torchrun --standalone --nproc_per_node=4 scripts/diagnose_advantage_scaling.py
+# 诊断通过后，依次训练 ARFM / RWR alpha=0.1 / RWR alpha=0.5，各40k步并以replan=5评估
+bash scripts/run_scaling_experiments.sh
+```
+
+已有 vanilla replan=5 基线为 **80.3%**，原始 ARFM 为 **81.3%**。新实验从原始 π0 独立初始化；不修改 vanilla、action transform、camera 或 sampler。`artifacts/scaling_comparison.json` 记录新实验完成后的比较结果。相同输出目录恢复需要 `--resume`，且不能改变 advantage scaling 或方法。
+
 当前实验部署在 `ganrenda/ARFM`，限定 GPU 0–3。仓库不包含权重、数据、虚拟环境和运行 checkpoint。
 
 代码包括：冻结历史 LeRobot π0、13 项离线奖励重建、RTG / LOO、跨 GPU 全局 ARFM loss、全参数训练、checkpoint 续跑、LIBERO 固定初始状态评估。详细假设见 `artifacts/assumptions.md`。推送时的进度快照和实测结果见 `artifacts/status.md`（GitHub 不会自动同步后台进度）；本 README 不意味着训练或数值复现已经完成。

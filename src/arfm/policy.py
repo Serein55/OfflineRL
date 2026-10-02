@@ -12,12 +12,13 @@ class ARFMPolicy(PI0Policy):
     method='arfm'
     time_sampler='uniform'
     fixed_alpha=.1
+    arfm_lambda=5e-4
     def forward(self,batch,noise=None,time=None):
         if time is None and self.time_sampler=='uniform':
             time=torch.rand(len(batch['action']),device=batch['action'].device)
         _,details=super().forward(batch,noise=noise,time=time)
         per_sample=details['losses_after_rm_padding'].float().mean((1,2))
-        return weighted_loss(per_sample,batch['advantage'],self.method,self.fixed_alpha)
+        return weighted_loss(per_sample,batch['advantage'],self.method,self.fixed_alpha,lam=self.arfm_lambda)
 
 def build_policy(checkpoint,stats,method='arfm',time_sampler='uniform',training=True):
     config=PI0Config(input_features={

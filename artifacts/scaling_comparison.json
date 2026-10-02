@@ -1,0 +1,63 @@
+{
+  "vanilla": {
+    "results": {
+      "libero_goal": {
+        "successes": 405,
+        "rollouts": 500,
+        "success_rate": 0.81
+      },
+      "libero_spatial": {
+        "successes": 404,
+        "rollouts": 500,
+        "success_rate": 0.808
+      },
+      "libero_object": {
+        "successes": 457,
+        "rollouts": 500,
+        "success_rate": 0.914
+      },
+      "libero_10": {
+        "successes": 340,
+        "rollouts": 500,
+        "success_rate": 0.68
+      },
+      "average": 0.803
+    },
+    "difference_pp": 0.0
+  },
+  "ARFM raw": {
+    "results": {
+      "libero_goal": {
+        "successes": 421,
+        "rollouts": 500,
+        "success_rate": 0.842
+      },
+      "libero_spatial": {
+        "successes": 384,
+        "rollouts": 500,
+        "success_rate": 0.768
+      },
+      "libero_object": {
+        "successes": 459,
+        "rollouts": 500,
+        "success_rate": 0.918
+      },
+      "libero_10": {
+        "successes": 362,
+        "rollouts": 500,
+        "success_rate": 0.724
+      },
+      "average": 0.813
+    },
+    "difference_pp": 0.9999999999999898
+  },
+  "ARFM task z-score": {
+    "status": "pending"
+  },
+  "RWR task z-score alpha=0.1": {
+    "status": "pending"
+  },
+  "RWR task z-score alpha=0.5": {
+    "status": "pending"
+  }
+}

@@ -6,14 +6,34 @@ import torch
 from torch.utils.data import Dataset, Sampler
 from torchvision.transforms import ColorJitter, functional as TF
 
+def task_zscore(values, eps=1e-8):
+    """Population statistics over all chunk starts of ONE concrete task."""
+    values=np.asarray(values,dtype=np.float64)
+    if eps<=0 or values.ndim!=1 or not values.size or not np.isfinite(values).all():
+        raise ValueError('Expected finite nonempty task advantages and positive epsilon')
+    mean=float(values.mean()); std=float(values.std(ddof=0))
+    normalized=((values-mean)/(std+eps)).astype(np.float32)
+    return normalized,dict(count=len(values),mean=mean,std=std,eps=eps,
+                           normalized_mean=float(normalized.mean(dtype=np.float64)),
+                           normalized_std=float(normalized.std(dtype=np.float64)))
+
 class LiberoChunks(Dataset):
-    def __init__(self, manifest, augment=True):
+    def __init__(self, manifest, augment=True, advantage_normalization='none', advantage_eps=1e-8):
+        if advantage_normalization not in ('none','task_zscore'):
+            raise ValueError(advantage_normalization)
         self.manifest=json.loads(Path(manifest).read_text())
+        self.advantage_stats=[]
         self.tasks=[]; self.offsets=[0]; self.handles={}; self.augment=augment
         self.jitter=ColorJitter(brightness=(.8,1.2),contrast=(.8,1.2),saturation=(.5,1.5),hue=(-.05,.05))
         for filename in self.manifest['files']:
             with np.load(filename) as f:
                 task={k:f[k].copy() for k in ('lengths','episodes','advantage','source')}
+            task['raw_advantage']=task['advantage'].copy()
+            normalized,stats=task_zscore(task['raw_advantage'],advantage_eps)
+            stats.update(task_file=str(filename),mode=advantage_normalization)
+            self.advantage_stats.append(stats)
+            if advantage_normalization=='task_zscore':
+                task['advantage']=normalized
             task['starts']=np.r_[0,np.cumsum(task['lengths'])]
             name=Path(str(task['source'])).stem.removesuffix('_demo')
             # BDDL scene prefixes are not natural-language commands.
@@ -35,7 +55,8 @@ class LiberoChunks(Dataset):
         state=np.concatenate([obs['ee_pos'][t],obs['ee_ori'][t],obs['gripper_states'][t]]).astype('float32')
         result={'action':torch.from_numpy(actions),'action_is_pad':torch.from_numpy(pad),
                 'observation.state':torch.from_numpy(state),'task':task['language'],
-                'advantage':torch.tensor(task['advantage'][local]),'task_id':task_id}
+                'advantage':torch.tensor(task['advantage'][local]),
+                'raw_advantage':torch.tensor(task['raw_advantage'][local]),'task_id':task_id}
         for name,key in [('agentview_rgb','camera0'),('eye_in_hand_rgb','camera1')]:
             # LIBERO demonstration convention is preserved. Eval preserves the same raw orientation (verified by state replay).
             image=torch.from_numpy(obs[name][t].copy()).permute(2,0,1).float()/255

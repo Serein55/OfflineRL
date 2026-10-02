@@ -1,0 +1,14 @@
+{
+  "seed": 2026,
+  "batches_per_stage": 256,
+  "global_batch": 16,
+  "augmentation": true,
+  "time_sampler": "uniform",
+  "updates": 0,
+  "advantage_grouping": "all chunk starts within each concrete task",
+  "eps": 1e-08,
+  "reference_checkpoints": [
+    "checkpoints/pi0",
+    "artifacts/vanilla_uniform_seed42/checkpoints/step_040000/model.pt"
+  ]
+}
