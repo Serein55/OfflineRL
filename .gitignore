@@ -17,3 +17,5 @@ artifacts/pipeline_state.txt
 artifacts/run.json
 artifacts/scaling_pipeline.lock
 artifacts/scaling_pipeline_state.txt
+artifacts/vanilla_delta_pipeline.lock
+artifacts/vanilla_delta_pipeline_state.txt

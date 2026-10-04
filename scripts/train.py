@@ -43,6 +43,8 @@ def main():
     optimizer=optim_cls(policy.parameters(),lr=2.5e-5,betas=(.9,.95),eps=1e-8,weight_decay=1e-10,**kw)
     if args.resume:
         ckpt=torch.load(args.resume,map_location='cpu',weights_only=False)
+        if ckpt['stats']!=dataset.manifest:
+            raise ValueError('Resume requires the same data manifest, action transform and normalization statistics')
         defaults={'advantage_normalization':'none','advantage_eps':1e-8,'arfm_lambda':5e-4}
         for key in ('method','time_sampler','seed','fixed_alpha','advantage_normalization','advantage_eps','arfm_lambda'):
             if ckpt['args'].get(key,defaults.get(key))!=getattr(args,key):

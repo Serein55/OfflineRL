@@ -40,6 +40,9 @@ def main():
     from robosuite.utils.transform_utils import quat2axisangle
     from arfm.policy import build_policy
     ckpt=torch.load(args.checkpoint,map_location='cpu',weights_only=False)
+    extra_delta=ckpt['stats'].get('extra_delta_transform',False)
+    if any(r.get('extra_delta_transform',False)!=extra_delta for r in results):
+        raise ValueError('Existing evaluation uses a different action transform; choose a new output')
     policy=build_policy('checkpoints/pi0',ckpt['stats'],training=False)
     policy.load_state_dict(ckpt['policy'],strict=True); del ckpt
     policy.cuda().eval()
@@ -70,7 +73,7 @@ def main():
                     obs,_,done,_=env.step(action.tolist())
                     if done: success=True; break
                 row={'suite':suite_name,'task_id':task_id,'episode':episode,'seed':args.seed,'success':success,'steps':t+1,
-                     'replan_steps':args.replan_steps}
+                     'replan_steps':args.replan_steps,'extra_delta_transform':extra_delta}
                 results.append(row)
                 with out.open('a') as f: f.write(json.dumps(row)+'\n')
                 print(json.dumps(row),flush=True)

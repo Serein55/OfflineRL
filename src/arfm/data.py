@@ -5,6 +5,7 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset, Sampler
 from torchvision.transforms import ColorJitter, functional as TF
+from arfm.action_transform import extra_delta
 
 def task_zscore(values, eps=1e-8):
     """Population statistics over all chunk starts of ONE concrete task."""
@@ -22,6 +23,7 @@ class LiberoChunks(Dataset):
         if advantage_normalization not in ('none','task_zscore'):
             raise ValueError(advantage_normalization)
         self.manifest=json.loads(Path(manifest).read_text())
+        self.extra_delta_transform=self.manifest.get('extra_delta_transform',False)
         self.advantage_stats=[]
         self.tasks=[]; self.offsets=[0]; self.handles={}; self.augment=augment
         self.jitter=ColorJitter(brightness=(.8,1.2),contrast=(.8,1.2),saturation=(.5,1.5),hue=(-.05,.05))
@@ -53,6 +55,8 @@ class LiberoChunks(Dataset):
         pad=np.arange(50)>=len(actions)
         actions=np.pad(actions,((0,50-len(actions)),(0,0)),mode='edge')
         state=np.concatenate([obs['ee_pos'][t],obs['ee_ori'][t],obs['gripper_states'][t]]).astype('float32')
+        if self.extra_delta_transform:
+            actions=extra_delta(actions,state)
         result={'action':torch.from_numpy(actions),'action_is_pad':torch.from_numpy(pad),
                 'observation.state':torch.from_numpy(state),'task':task['language'],
                 'advantage':torch.tensor(task['advantage'][local]),

@@ -52,12 +52,81 @@
     "difference_pp": 0.9999999999999898
   },
   "ARFM task z-score": {
-    "status": "pending"
+    "results": {
+      "libero_goal": {
+        "successes": 424,
+        "rollouts": 500,
+        "success_rate": 0.848
+      },
+      "libero_spatial": {
+        "successes": 382,
+        "rollouts": 500,
+        "success_rate": 0.764
+      },
+      "libero_object": {
+        "successes": 465,
+        "rollouts": 500,
+        "success_rate": 0.93
+      },
+      "libero_10": {
+        "successes": 326,
+        "rollouts": 500,
+        "success_rate": 0.652
+      },
+      "average": 0.7985000000000001
+    },
+    "difference_pp": -0.44999999999999485
   },
   "RWR task z-score alpha=0.1": {
-    "status": "pending"
+    "results": {
+      "libero_goal": {
+        "successes": 411,
+        "rollouts": 500,
+        "success_rate": 0.822
+      },
+      "libero_spatial": {
+        "successes": 388,
+        "rollouts": 500,
+        "success_rate": 0.776
+      },
+      "libero_object": {
+        "successes": 466,
+        "rollouts": 500,
+        "success_rate": 0.932
+      },
+      "libero_10": {
+        "successes": 357,
+        "rollouts": 500,
+        "success_rate": 0.714
+      },
+      "average": 0.8109999999999999
+    },
+    "difference_pp": 0.7999999999999896
   },
   "RWR task z-score alpha=0.5": {
-    "status": "pending"
+    "results": {
+      "libero_goal": {
+        "successes": 407,
+        "rollouts": 500,
+        "success_rate": 0.814
+      },
+      "libero_spatial": {
+        "successes": 382,
+        "rollouts": 500,
+        "success_rate": 0.764
+      },
+      "libero_object": {
+        "successes": 460,
+        "rollouts": 500,
+        "success_rate": 0.92
+      },
+      "libero_10": {
+        "successes": 309,
+        "rollouts": 500,
+        "success_rate": 0.618
+      },
+      "average": 0.7789999999999999
+    },
+    "difference_pp": -2.4000000000000132
   }
 }

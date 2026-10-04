@@ -7,8 +7,9 @@ from lerobot.configs.types import FeatureType, NormalizationMode, PolicyFeature
 from lerobot.policies.pi0.configuration_pi0 import PI0Config
 from lerobot.policies.pi0.modeling_pi0 import PI0Policy
 from arfm.objective import weighted_loss
+from arfm.action_transform import ExtraDeltaInference
 
-class ARFMPolicy(PI0Policy):
+class ARFMPolicy(ExtraDeltaInference,PI0Policy):
     method='arfm'
     time_sampler='uniform'
     fixed_alpha=.1
@@ -32,6 +33,7 @@ def build_policy(checkpoint,stats,method='arfm',time_sampler='uniform',training=
     for name,key in [('observation.state','state'),('action','action')]:
         norm[name]={'mean':torch.tensor(stats[key+'_mean']),'std':torch.tensor(stats[key+'_std'])}
     policy=ARFMPolicy(config,dataset_stats=norm)
+    policy.extra_delta_transform=stats.get('extra_delta_transform',False)
     raw=load_file(str(Path(checkpoint)/'model.safetensors'))
     # Check historical and transformed key schemas against this exact runtime.
     target=policy.model.state_dict()

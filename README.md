@@ -31,7 +31,23 @@
 
 初始π0上z-score ARFM的平均ESS仍为15.984，早期加权很弱。成熟模型上的平均ESS略高于建议的8–14范围，但已非均匀，且没有ESS<4的batch，因此保留solver和λ=0.0005，不强行调到目标ESS。固定α选择0.1和0.5；α=1因权重过于集中不进入训练。
 
-新队列依次运行z-score ARFM、RWR α=0.1、RWR α=0.5，各从原始π0初始化，训练40k并以replan=5评估2000次。保留vanilla 80.3%基线，不改extra-delta、camera、sampler及其他训练设置。新结果以 `artifacts/scaling_comparison.json` 为准；pending表示尚无完整评估结果。离线逐样本数据、协议和统计保存在 `artifacts/scaling_diagnostic/`。
+新队列依次运行z-score ARFM、RWR α=0.1、RWR α=0.5，各从原始π0初始化，训练40k并以replan=5评估2000次。保留vanilla 80.3%基线，不改extra-delta、camera、sampler及其他训练设置。scaling三组现已完成：z-score ARFM 79.85%，RWR α=0.1 81.10%，RWR α=0.5 77.90%；逐suite结果见 `artifacts/scaling_comparison.json`。离线逐样本数据、协议和统计保存在 `artifacts/scaling_diagnostic/`。
+
+## Extra delta Vanilla 对照（2026-10-04）
+
+在独立的 `vanilla_extra_delta_uniform_seed42` 实验中，从原始π0重新训练Vanilla 40k步，seed42、global batch16、uniform时间采样，使用GPU0–3；完成后以replan=5评估40×50次。相机、action horizon、采样器、优化器及学习率保持原设置，原始80.3% baseline不变。
+
+采用 [OpenPI legacy LIBERO](https://github.com/Physical-Intelligence/openpi/blob/main/src/openpi/training/config.py) 的extra delta约定：chunk内每个动作的前6维减去chunk起点的原始state前6维，gripper不变。先变换再归一化。推理先反归一化，再加回生成该chunk时的state；执行队列后续动作时不使用新的state，replan时更新锚点。LIBERO原始动作本来就是delta，这里是明确的legacy兼容实验，不代表原数据是绝对动作。
+
+重新计算338575个state、16928750个chunk动作的总体mean/std：覆盖每个chunk起点与全部50个offset，包括末尾repeat-last padding；数值变换与加载器相同，使用float64累计。原始manifest按单帧统计动作，新统计按展开的chunk统计，两者的统计口径区别明确记录在 `artifacts/extra_delta_norm_stats.json`。训练使用独立文件 `data/processed/manifest_extra_delta.json`，checkpoint携带完整统计及transform标记，评估自动读取。
+
+```bash
+source scripts/env.sh
+.venv/bin/python scripts/compute_delta_stats.py
+bash scripts/run_vanilla_delta.sh
+```
+
+队列先验证2步四卡训练、checkpoint重载及1次闭环rollout，然后独立初始化正式训练；smoke结果不作为成功率证据。状态位于 `artifacts/vanilla_delta_pipeline_state.txt`，日志为 `logs/train_vanilla_extra_delta.log`，tmux会话为 `vanilla_delta`。完成后生成 `artifacts/vanilla_delta_comparison.json`。25项测试及真实数据动作往返检查通过。
 
 ## 安装与数据
 
