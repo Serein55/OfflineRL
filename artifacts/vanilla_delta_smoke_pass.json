@@ -1,0 +1,14 @@
+{
+  "training_steps": 2,
+  "closed_loop_rollouts": 1,
+  "result": {
+    "suite": "libero_goal",
+    "task_id": 0,
+    "episode": 0,
+    "seed": 42,
+    "success": false,
+    "steps": 280,
+    "replan_steps": 5,
+    "extra_delta_transform": true
+  }
+}

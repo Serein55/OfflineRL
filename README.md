@@ -142,3 +142,41 @@ tmux -L arfm list-sessions
 原始参考指南及旧版状态文档保留在Git历史中；当前说明统一以本文为准。
 
 参考：[ARFM](https://arxiv.org/abs/2509.04063)、[LeRobot](https://github.com/huggingface/lerobot)、[LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO)、[ReinboT](https://github.com/COST-97/reinboT)。
+
+## ARFM失效分析（2026-10-06，离线）
+
+保留原始Vanilla 80.3%及其checkpoint。本次只读取既有评估、奖励缓存和训练日志，没有改变数据、权重或启动训练。
+
+Spatial每项50次，表中为成功次数；任务都是把指定位置的黑碗放到盘子上：
+
+| ID | 黑碗起点 | Vanilla | 原ARFM | z-score ARFM | RWR .1 | RWR .5 |
+|---|---|---:|---:|---:|---:|---:|
+| 0 | 盘子与ramekin之间 | 33 | 29 | 39 | 25 | 29 |
+| 1 | ramekin旁 | 37 | 38 | 37 | 33 | 32 |
+| 2 | 桌面中央 | 48 | 48 | 48 | 47 | 45 |
+| 3 | 饼干盒上 | 44 | 45 | 44 | 48 | 47 |
+| 4 | 柜子上层抽屉内 | 39 | 31 | 30 | 34 | 34 |
+| 5 | ramekin上 | 36 | 27 | 23 | 28 | 33 |
+| 6 | 饼干盒旁 | 49 | 46 | 47 | 48 | 49 |
+| 7 | 炉子上 | 44 | 46 | 45 | 42 | 42 |
+| 8 | 盘子旁 | 33 | 36 | 32 | 38 | 37 |
+| 9 | 木柜上 | 41 | 38 | 37 | 45 | 34 |
+
+z-score ARFM的Spatial净下降22次，任务4下降9次、任务5下降13次，两者合计解释净下降；其他八项合计持平。配对相同init-state：整体新增成功35次、丢失成功57次。原始ARFM在这两项也下降17次，因此不能把所有下降归因于z-score。50次/task和单训练seed不足以证明具体因果。
+
+奖励和实际训练权重的证据：
+
+- Spatial各任务advantage与演示进度的Pearson相关平均0.703；每任务最高5% advantage的样本平均处于96.5%进度，平均89.5%的动作时域为padding（总体为20.0%）。这是跨任务等权平均，不是某一条轨迹。
+- 用seed42逐step重放四组各40000个真实global batch，并使用该步日志alpha重算softmax；重算ESS与训练日志最大误差小于1e-5。没有用模拟alpha代替训练alpha。
+- 全40任务：均匀权重下前20%阶段占20.08%、后20%占20.34%；z-score ARFM分别为17.03%、26.17%；RWR .5为12.38%、38.71%。最后单帧权重质量从0.684%增至ARFM的1.824%、RWR .5的6.858%。这描述loss权重，不等同于实际梯度范数贡献。
+- Spatial任务总权重/采样占比在z-score ARFM中约0.997–1.008，任务4为1.006、任务5为1.000，基本排除这两个任务整体被少采样/少分权的解释。偏置主要在任务内部阶段。
+- reward中的terminal success仅末帧非零。后缀平均RTG使其贡献为`(0.1/13)/remaining_steps`，天然随接近结尾放大；progress和与未来keypoint的图像相似度也有阶段成分。Spatial RTG方差的协方差分解中，progress约23.3%、terminal约21.4%，两路image MSE合计约38.5%。这些分量相关，份额是协方差贡献，非独立因果贡献。
+- 当前padding置零后仍对完整50步取mean。因此高advantage末段chunk同时含较少有效动作；padding虽不产生对应时域的梯度，仍需区分有效动作数、loss尺度和alpha依赖的loss方差。不能直接把89.5% padding解释成训练了padding动作。
+
+当前最有依据的假设：z-score修复了数值尺度，却放大了“演示阶段”信号，未证明能衡量同状态下的动作质量；加强权重可能压低早期操作学习。原ARFM几乎均匀仍出现同任务下降，说明优化路径敏感性和单seed波动也需要验证。现有日志没有失败视频，无法断言是选错碗、抓取失败或放置失败。
+
+下一步按顺序：先对任务4/5的配对失败init-state录制Vanilla/ARFM视频，确认具体失败阶段；然后只在离线对比按task+进度分组去均值的advantage及terminal/progress消融，检查阶段权重、ESS和有效动作数。只有消除明显阶段偏置后才选择一个40k对照；固定alpha有助于先隔离reward信号，暂不同时改camera、delta或sampler。若随后有稳定提升，再补训练seed；不要以某次单seed高于80.3%作为方法成立的结论。
+
+复现分析：`source scripts/env.sh && .venv/bin/python scripts/analyze_arfm.py`。全40任务结果和配对统计在 `artifacts/arfm_analysis/task_comparison.csv`、`analysis.json`；可回放的任务4/5失败episode索引在 `paired_failure_examples.json`。统计p值仅是未校正的episode配对描述，不能替代考虑task聚类和多训练seed的不确定性分析。
+
+![Spatial与权重阶段偏置](artifacts/arfm_analysis/spatial_and_weight_bias.png)

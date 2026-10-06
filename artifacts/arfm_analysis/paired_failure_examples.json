@@ -1,0 +1,46 @@
+{
+  "4": {
+    "vanilla_success_arfm_failure": [
+      2,
+      4,
+      14,
+      21,
+      31,
+      32,
+      37,
+      38,
+      39,
+      40,
+      41
+    ],
+    "vanilla_failure_arfm_success": [
+      9,
+      28
+    ]
+  },
+  "5": {
+    "vanilla_success_arfm_failure": [
+      0,
+      1,
+      12,
+      17,
+      19,
+      20,
+      24,
+      25,
+      26,
+      27,
+      29,
+      35,
+      40,
+      45,
+      46,
+      47
+    ],
+    "vanilla_failure_arfm_success": [
+      4,
+      9,
+      37
+    ]
+  }
+}
