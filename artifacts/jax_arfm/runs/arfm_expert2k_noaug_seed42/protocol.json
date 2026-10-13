@@ -1,0 +1,19 @@
+{
+  "dataset_id": "local/libero_expert2k",
+  "method": "arfm",
+  "lam": 0.0005,
+  "fixed_alpha": 0.1,
+  "annotations_sha256": "f9de61e714f8d8f7a74ff38710dee433c8e00f2267f688d71250bf4975aca9f6",
+  "annotation_metadata": {
+    "dataset_id": "local/libero_expert2k",
+    "dataset_revision": "expert2k-preserved-v1",
+    "metadata_sha256": "042f1a0aed691941b77234d546dbc7a660a481156a6d764853bcc4f7d05f49c5",
+    "normalization": "none",
+    "reward_description": "Exact historical Table8 reconstruction on original raw observations/actions/joints; no recomputation",
+    "mapping_sha256": "e0b4ba2a97cbdf288331cd8867bb62a2d293cf098c19cfac2ab329695f11e1b6",
+    "manifest_sha256": "02051e23b941b1e6ff985fd13fed7ee94dd95a30ebe6363200eca5047effda79"
+  },
+  "batch_size": 32,
+  "image_augmentation": false,
+  "ema_decay": 0.99
+}

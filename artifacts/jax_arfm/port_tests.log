@@ -1,0 +1,17 @@
+...../pfs/pfs-oHNwH0/ganrenda/ARFM/vendor/openpi_official/.venv/lib/python3.11/site-packages/beartype/_util/error/utilerrwarn.py:105: BeartypeDecorHintPep585DeprecationWarning: Method openpi.training.utils.TrainState() parameter "params" PEP 484 type hint typing.Hashable deprecated by PEP 585. This hint is scheduled for removal in the first Python version released after October 5th, 2025. To resolve this, import this hint from "beartype.typing" rather than "typing". For further commentary and alternatives, see also:
+    https://beartype.readthedocs.io/en/latest/api_roar/#pep-585-deprecations
+  warn(message, cls)
+/pfs/pfs-oHNwH0/ganrenda/ARFM/vendor/openpi_official/.venv/lib/python3.11/site-packages/beartype/_util/error/utilerrwarn.py:105: BeartypeDecorHintPep585DeprecationWarning: Method openpi.training.utils.TrainState() parameter "opt_state" PEP 484 type hint typing.Iterable[ForwardRef('ArrayTree')] deprecated by PEP 585. This hint is scheduled for removal in the first Python version released after October 5th, 2025. To resolve this, import this hint from "beartype.typing" rather than "typing". For further commentary and alternatives, see also:
+    https://beartype.readthedocs.io/en/latest/api_roar/#pep-585-deprecations
+  warn(message, cls)
+/pfs/pfs-oHNwH0/ganrenda/ARFM/vendor/openpi_official/.venv/lib/python3.11/site-packages/beartype/_util/error/utilerrwarn.py:105: BeartypeDecorHintPep585DeprecationWarning: Method openpi.training.utils.TrainState() parameter "opt_state" PEP 484 type hint typing.Mapping[typing.Any, ForwardRef('ArrayTree')] deprecated by PEP 585. This hint is scheduled for removal in the first Python version released after October 5th, 2025. To resolve this, import this hint from "beartype.typing" rather than "typing". For further commentary and alternatives, see also:
+    https://beartype.readthedocs.io/en/latest/api_roar/#pep-585-deprecations
+  warn(message, cls)
+/pfs/pfs-oHNwH0/ganrenda/ARFM/vendor/openpi_official/.venv/lib/python3.11/site-packages/beartype/_util/error/utilerrwarn.py:105: BeartypeDecorHintPep585DeprecationWarning: Method openpi.training.utils.TrainState() parameter "ema_params" PEP 484 type hint typing.Hashable deprecated by PEP 585. This hint is scheduled for removal in the first Python version released after October 5th, 2025. To resolve this, import this hint from "beartype.typing" rather than "typing". For further commentary and alternatives, see also:
+    https://beartype.readthedocs.io/en/latest/api_roar/#pep-585-deprecations
+  warn(message, cls)
+.
+----------------------------------------------------------------------
+Ran 6 tests in 10.705s
+
+OK

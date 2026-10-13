@@ -1,0 +1,23 @@
+{
+  "completed_at": "2026-10-13T18:54:18.924014+08:00",
+  "main_branches": 228,
+  "states": 57,
+  "initial_episodes": 30,
+  "monte_carlo_branches": 32,
+  "main_snapshot_checks": "PASS",
+  "goal_vs_success": "PASS",
+  "frozen_ranker_weights_unchanged": true,
+  "original_annotations_sha256": "f9de61e714f8d8f7a74ff38710dee433c8e00f2267f688d71250bf4975aca9f6",
+  "valid_inputs": [
+    "exact_snapshot",
+    "additional_episodes",
+    "monte_carlo_exact_v2"
+  ],
+  "excluded_inputs": {
+    "pilot": "Replay state mismatch; incomplete pilot",
+    "repeat_*": "Cross-process initial state/action drift",
+    "monte_carlo_exact": "Interrupted; no cross-process continuation allowed"
+  },
+  "tests": "5/5 passed",
+  "training_started": false
+}

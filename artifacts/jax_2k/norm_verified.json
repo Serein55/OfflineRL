@@ -1,0 +1,8 @@
+{
+  "path": "/pfs/pfs-oHNwH0/ganrenda/ARFM/artifacts/jax_2k/assets/pi0_libero/local/libero_expert2k/norm_stats.json",
+  "sha256": "8be82b9f9f6e779b3a6cc49acbeb62384a37def1b282260e6dfc670cc8c0c1fd",
+  "extra_delta": true,
+  "algorithm": "pinned official compute_norm_stats.py",
+  "source": "local/libero_expert2k",
+  "computed_on_cpu": true
+}

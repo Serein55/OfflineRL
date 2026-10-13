@@ -1,0 +1,8 @@
+{
+  "stage": "complete",
+  "time": "2026-10-12T03:05:21.917754+08:00",
+  "experiment": "arfm_expert2k_noaug_seed42",
+  "train_steps": 15000,
+  "eval_episodes": 2000,
+  "checkpoint": "/pfs/pfs-oHNwH0/ganrenda/ARFM/artifacts/jax_arfm/checkpoints/pi0_libero/arfm_expert2k_noaug_seed42/15000"
+}

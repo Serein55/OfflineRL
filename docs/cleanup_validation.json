@@ -1,0 +1,28 @@
+{
+  "jax_2k/15000": {
+    "successes": 1647,
+    "episodes": 2000,
+    "checkpoint_structure": true
+  },
+  "jax_2k/30000": {
+    "successes": 1831,
+    "episodes": 2000,
+    "checkpoint_structure": true
+  },
+  "jax_arfm/15000": {
+    "successes": 1675,
+    "episodes": 2000,
+    "checkpoint_structure": true
+  },
+  "jax_arfm/30000": {
+    "successes": 1828,
+    "episodes": 2000,
+    "checkpoint_structure": true
+  },
+  "sidecar_sha256": "f9de61e714f8d8f7a74ff38710dee433c8e00f2267f688d71250bf4975aca9f6",
+  "jax_tests": "6 passed; CPU four-device test",
+  "norm_hash_verified": true,
+  "conversion_schema_verified": true,
+  "eval_client_import_and_help": "passed",
+  "project_diff_whitespace_check": "passed"
+}

@@ -8,14 +8,17 @@ vendor/
 .env
 .env.*
 *.pt
-*.pt.tmp
 *.safetensors
-configs/libero/
-artifacts/*_seed*/
-artifacts/smoke*/
-artifacts/pipeline_state.txt
-artifacts/run.json
-artifacts/scaling_pipeline.lock
-artifacts/scaling_pipeline_state.txt
-artifacts/vanilla_delta_pipeline.lock
-artifacts/vanilla_delta_pipeline_state.txt
+configs/openpi_libero/
+artifacts/jax_2k/checkpoints/
+artifacts/jax_arfm/checkpoints/
+artifacts/**/*.lock
+artifacts/jax_2k/*_arrays.npz
+
+# Invalid/interrupted diagnostic batches remain local for incident inspection.
+artifacts/advantage_counterfactual/pilot/
+artifacts/advantage_counterfactual/repeat_*/
+artifacts/advantage_counterfactual/monte_carlo_exact/
+artifacts/advantage_counterfactual/active_clients.json
+artifacts/advantage_counterfactual/**/status.json
+artifacts/advantage_counterfactual/exact_snapshot/analysis.json

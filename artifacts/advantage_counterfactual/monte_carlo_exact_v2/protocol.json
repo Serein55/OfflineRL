@@ -1,0 +1,44 @@
+{
+  "checkpoint": "jax_2k/vanilla_seed42/30000",
+  "tasks": [
+    4
+  ],
+  "episodes": 1,
+  "episode_start": 1,
+  "continuation_replica": 0,
+  "replicas": 16,
+  "anchors": [
+    40
+  ],
+  "candidates": [
+    "policy_a",
+    "policy_b"
+  ],
+  "prefix": 5,
+  "episode_horizon": 220,
+  "replan": 5,
+  "seed": 7,
+  "resolution": 128,
+  "paired_noise": true,
+  "restore": "Copy complete MjData, controller, gripper, observation buffers, environment clock and RNG; duplicate prefix dynamics error <= 1e-10",
+  "development_tasks": [
+    0,
+    4,
+    5
+  ],
+  "heldout_tasks": [
+    1,
+    2,
+    3,
+    6,
+    7,
+    8,
+    9
+  ],
+  "notes": [
+    "Natural candidates and artificial negative controls reported separately.",
+    "One continuation seed per state: exploratory, not a calibrated success probability.",
+    "H50 includes closed-loop continuation and cannot validate the 5-step prefix by itself.",
+    "Branch results must not be treated as independent episodes in uncertainty estimates."
+  ]
+}

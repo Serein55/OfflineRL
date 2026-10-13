@@ -1,0 +1,114 @@
+{
+  "scope": "One development state only; no generalization claim",
+  "candidate_order": [
+    "policy_a",
+    "policy_b"
+  ],
+  "all_states_candidates_and_first5_equal": true,
+  "success_by_seed": [
+    [
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1
+    ]
+  ],
+  "estimation": {
+    "successes": [
+      5,
+      8
+    ],
+    "seeds": 8,
+    "q": [
+      0.625,
+      1.0
+    ],
+    "b_minus_a": 0.375,
+    "paired_bootstrap_95ci": [
+      0.0,
+      0.75
+    ],
+    "discordant_wins_b": 3,
+    "discordant_wins_a": 0,
+    "exact_paired_sign_test_p": 0.25
+  },
+  "validation": {
+    "successes": [
+      2,
+      6
+    ],
+    "seeds": 8,
+    "q": [
+      0.25,
+      0.75
+    ],
+    "b_minus_a": 0.5,
+    "paired_bootstrap_95ci": [
+      0.125,
+      0.875
+    ],
+    "discordant_wins_b": 4,
+    "discordant_wins_a": 0,
+    "exact_paired_sign_test_p": 0.125
+  },
+  "pooled_descriptive_only": {
+    "successes": [
+      7,
+      14
+    ],
+    "seeds": 16,
+    "q": [
+      0.4375,
+      0.875
+    ],
+    "b_minus_a": 0.4375,
+    "paired_bootstrap_95ci": [
+      0.1875,
+      0.6875
+    ],
+    "discordant_wins_b": 7,
+    "discordant_wins_a": 0,
+    "exact_paired_sign_test_p": 0.015625
+  },
+  "estimated_advantage": [
+    -0.1875,
+    0.1875
+  ],
+  "validation_same_direction": true,
+  "validated_difference": false,
+  "conservative_advantage": [
+    0.0,
+    0.0
+  ],
+  "note": "Bootstrap intervals can be degenerate at small n; exact paired test is required. Pooled outcomes are not independent validation."
+}

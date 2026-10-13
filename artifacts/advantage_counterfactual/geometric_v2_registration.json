@@ -1,0 +1,20 @@
+{
+  "time_utc": "2026-10-13T06:06:40.332550+00:00",
+  "source_sha256": "a400cdfd69313e1ac7c8ddf50422f23ae4617a3076e4d70bb1d324bfbec89106",
+  "development_tasks": [
+    0,
+    4,
+    5
+  ],
+  "heldout_tasks": [
+    1,
+    2,
+    3,
+    6,
+    7,
+    8,
+    9
+  ],
+  "formula": "event_H5 + (goal_xy_before - goal_xy_after5)/0.1 if initially in grasp contact, else event_H5 + 0.2*(reach_before - reach_after5)/0.1",
+  "rule": "Report natural policy candidate pairs separately; paired accuracy must exceed chance with episode-cluster uncertainty. Do not tune formula using heldout outcomes."
+}

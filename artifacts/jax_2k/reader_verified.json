@@ -1,0 +1,13 @@
+{
+  "frames": 338575,
+  "tasks_checked": 40,
+  "samples_checked": 120,
+  "extra_delta_verified": true,
+  "end_padding_verified": true,
+  "reader": "pinned OpenPI/LeRobot",
+  "image_shape": [
+    128,
+    128,
+    3
+  ]
+}

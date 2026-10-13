@@ -1,0 +1,21 @@
+{
+  "time_utc": "2026-10-13T06:11:26.932209+00:00",
+  "development_tasks": [
+    0,
+    4,
+    5
+  ],
+  "heldout_tasks": [
+    1,
+    2,
+    3,
+    6,
+    7,
+    8,
+    9
+  ],
+  "method": "L2 pairwise logistic ranker on same-state success/failure differences; 8 fixed first-five-step features; each state equally weighted",
+  "regularization": 1.0,
+  "notes": "Fit only development tasks after their 3 episodes complete. Do not tune on heldout outcomes. Include controls in fit, report natural-pair performance independently.",
+  "source_sha256": "259ee967156bf8c02ebca81001dc207a30a6d361c85ae99fea2bd506f1ba31e8"
+}

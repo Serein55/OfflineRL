@@ -1,0 +1,20 @@
+{
+  "dataset_id": "local/libero_expert2k",
+  "episodes": 2000,
+  "frames": 338575,
+  "tasks": 40,
+  "fps": 20,
+  "image_shape": [
+    128,
+    128,
+    3
+  ],
+  "image_transform": "rotate180 lossless PNG",
+  "dropped_frames": 0,
+  "filtered_noops": false,
+  "rtg_recomputed_and_verified": true,
+  "advantage_recomputed_and_verified": true,
+  "reward_reused_exactly": true,
+  "metadata_sha256": "042f1a0aed691941b77234d546dbc7a660a481156a6d764853bcc4f7d05f49c5",
+  "annotations_sha256": "f9de61e714f8d8f7a74ff38710dee433c8e00f2267f688d71250bf4975aca9f6"
+}

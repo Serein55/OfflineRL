@@ -1,0 +1,36 @@
+{
+  "time_utc": "2026-10-13T06:14:58.865188+00:00",
+  "development_tasks": [
+    0,
+    4,
+    5
+  ],
+  "development_episodes": [
+    0,
+    1,
+    2
+  ],
+  "informative_states": 5,
+  "pairs": 16,
+  "regularization": 1.0,
+  "features": [
+    "event_h5",
+    "reach_progress_unheld",
+    "goal_progress_held",
+    "goal_progress_unheld",
+    "contact_change",
+    "height_change_held",
+    "height_change_unheld",
+    "goal_within_prefix"
+  ],
+  "weights": [
+    0.0,
+    -0.020246551688962135,
+    -0.009322830286663817,
+    -0.0004611423917685383,
+    0.21672337402694852,
+    0.3498628042658842,
+    0.0027345109595405754,
+    0.0
+  ]
+}

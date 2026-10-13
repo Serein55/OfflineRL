@@ -1,0 +1,34 @@
+{
+  "time_utc": "2026-10-13T06:16:40.630882+00:00",
+  "task": 4,
+  "episode": 1,
+  "anchor": 40,
+  "candidates": [
+    "policy_a",
+    "policy_b"
+  ],
+  "selection": "Development-state natural candidates differed on original seed; selected before validation seeds",
+  "fit_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "validation_seeds": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "formula": "Q_k=mean(success across continuation seeds); A_k=Q_k-mean_candidate_Q",
+  "acceptance": "Fit ranking must match independent validation success-probability difference. Report paired confidence intervals; otherwise retain zero advantage for insufficient evidence.",
+  "scope": "One development state sanity check only; no claim of 10-task generalization."
+}
